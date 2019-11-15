@@ -26,7 +26,6 @@ contract SupplyChain {
 
     
     mapping(address => Company) companyMap; //地址与公司的映射
-    
     mapping(address => bytes32) nameMap; //地址与公司名的映射
     address car = 0x0192a157a51f2c7f130c854b2c6d8247e98bc9a0; //汽车公司的地址
     address tyre = 0xa778ec346d58da0f43e5c391713f582144ea2f15; //轮胎公司的地址
@@ -34,6 +33,25 @@ contract SupplyChain {
     address alui = 0x31c76adfe827253ed48aad024f73fada89c03b77; //
     address alum = 0x989ffc0b75466f8b31127852266cc0eb28d40954; //铝矿公司的地址
     event Bill_(address payer, address payee, uint value, bool ability);
+
+    function changeProperty(address comm, uint amount) public {
+        Company c = companyMap[comm];
+        if (c.companyName == "bank") {
+            c.property-=amount;
+        }
+        else c.property+=amount;
+    }
+
+    function initBill(Bill b) public {
+        b.payer = 0x0;
+        b.payee = 0x0;
+        b.transactionCounts = 0;
+        b.paymentTime = 20000101;
+        b.repaymentTime = 20001001;
+        b.tradeInf = "payre： payee：...";
+        b.ability = false;
+    } 
+
     function createBill(address payee, uint amount) public {
         Bill storage bill;
         bill.transactionCounts = 1;
@@ -49,5 +67,13 @@ contract SupplyChain {
 
     function transferBill(address payee, uint amount) public{
 
+    }
+
+    function borrowBill(address payee, uint amount) public{
+
+    }
+
+    function payBill() public {
+        
     }
 }
