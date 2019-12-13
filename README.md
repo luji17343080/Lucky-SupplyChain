@@ -1,11 +1,12 @@
 ![](images/00.png)  
+## [【Github地址】](https://github.com/luji17343080/Lucky-SupplyChain)
 ## 一、项目背景  
 ![](images/01.png)  
 
 整个项目的目的是将核心公司（车企）的`还款能力`传递下去，使有核心公司的欠款单据的链上的公司可以通过单据向金融机构（银行）借款融资。然而金融机构只认可车企的还款能力，所以当某企业凭单据向金融机构借款时，金融机构需要对该单据的公司进行评估看是否具有还款能力，在本次的情境下，只需要知道单据的源头是否为车企就行了。显然这就是一个简单的溯源问题，只需要追溯单据最初的付款方是否为车企，所以只需要通过区块链的方式将每次交易的信息记录下来就行了。因此，我认为这次需要设计的供应链金融的平台的核心就是`账款单据`，我通过一个`ability`属性来最终表示一个公司是否具有向金融机构借款融资的能力，当然，`ability`在链上是可以传递的。  
 
 ## 二、方案设计 
-
+【[源码地址](https://github.com/luji17343080/Lucky-SupplyChain/blob/master/src/SupplyChain.sol)】
 ### 0. 数据建立  
 #### 数据结构
 `公司`Company结构体属性：`公司名称`，`资产`  
@@ -337,7 +338,7 @@
     ![](images/test29.png)  
 
 ## 四、后端（Java）
-通过`FISCO BCOS`控制台提供的方法先将合约转换为`Java`类([源码地址]())：  
+通过`FISCO BCOS`控制台提供的方法先将合约转换为`Java`类([源码地址](https://github.com/luji17343080/Lucky-SupplyChain/blob/master/src/SupplyChain.java))：  
 - 将合约文件放入`fisco-bcos/console/contracts/solidity`下  
     
     ![](images/h0.png)  
@@ -356,7 +357,8 @@
 
 - 在`fisco-bcos`上部署`SupplyChain.sol`
 
-    ![](images/h4.png)
+    ![](images/h4.png)  
+
 
 ## 五、前端界面展示（VUE.js）
 前端使用vue框架搭建，npm安装框架
@@ -367,7 +369,7 @@
    - 由于最初的源使用npm install命令时非常的慢，所以可以通过命令npm config set registry https://registry.npm.taobao.org切换阿里的源
    - 通过npm config get registry查看npm的源
 - 然后进入vue项目中（含vue的目录结构），通过命令npm install安装依赖
-- 通过命令npm run dev在本地端口8080启动项目
+- 通过命令npm run dev在本地端口8080启动项目  
 **……**
 ## 六、心得体会
 这次作业虽然真正只实现了`链端`，但收获还是蛮多的，学习了一门新的语言`solidity`，在有其他语言的基础下，`solidity`的学习还是比较容易的，只是要注意一些特别的变量和函数而已，像`address`、`bytes`、`event`、`emit`等。除此之外，还通过使用`FISCO BCOS`和`WEBASE`了解了区块链`链端`的知识，包括`链的搭建`，`合约的部署`以及`合约的调用`等等。
